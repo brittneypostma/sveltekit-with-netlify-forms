@@ -2,12 +2,40 @@
 	export const prerender = true;
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	let isSubmitting: boolean = false;
 
-<form name="netlify-form-example" method="post" netlify netlify-honeypot="bot-field">
+	const handleSubmit = (e: Event) => {
+		const form: HTMLFormElement | null = document.querySelector('form');
+		const formData: FormData = new FormData(e.target as HTMLFormElement);
+		let stringData: string = formData.toString();
+		isSubmitting = true;
+		return fetch('/', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: new URLSearchParams(stringData)
+		})
+			.then(() => {
+				console.log('Form successfully submitted');
+				isSubmitting = false;
+				form?.reset();
+			})
+			.catch((error) => {
+				alert(error);
+				isSubmitting = false;
+			});
+	};
+</script>
+
+<form
+	on:submit|preventDefault={handleSubmit}
+	name="netlify-form-example"
+	method="post"
+	netlify
+	netlify-honeypot="bot-field"
+>
 	<input type="hidden" name="netlify-form-example" value="netlify-form-example" />
-	<input type="text" name="bot-field" />
+	<input type="text" name="bot-field" hidden />
 	<p>
 		<label>Your Name: <input type="text" name="name" /></label>
 	</p>
