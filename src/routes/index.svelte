@@ -27,7 +27,7 @@
 	};
 </script> -->
 
-<form name="contact" method="get" netlify-honeypot="bot-field" netlify class="contactForm">
+<form name="netlify-form-example" method="POST" netlify-honeypot="bot-field" data-netlify="true">
 	<input name="name" required placeholder="Name" type="name" />
 	<br />
 	<input name="email" required placeholder="Email" type="email" />
