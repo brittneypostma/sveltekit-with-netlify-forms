@@ -1,8 +1,8 @@
-<script context="module">
+<!-- <script context="module">
 	export const prerender = true;
-</script>
+</script> -->
 
-<script lang="ts">
+<!-- <script lang="ts">
 	let isSubmitting: boolean = false;
 
 	const handleSubmit = (e: Event) => {
@@ -25,16 +25,9 @@
 				isSubmitting = false;
 			});
 	};
-</script>
+</script> -->
 
-<form
-	on:submit|preventDefault={handleSubmit}
-	name="netlify-form-example"
-	method="post"
-	netlify
-	netlify-honeypot="bot-field"
->
-	<input type="hidden" name="netlify-form-example" value="netlify-form-example" />
+<form name="netlify-form-example" method="post" netlify netlify-honeypot="bot-field">
 	<input type="text" name="bot-field" hidden />
 	<p>
 		<label>Your Name: <input type="text" name="name" /></label>
