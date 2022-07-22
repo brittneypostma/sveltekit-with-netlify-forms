@@ -1,6 +1,6 @@
-<!-- <script context="module">
+<script context="module">
 	export const prerender = true;
-</script> -->
+</script>
 
 <!-- <script lang="ts">
 	let isSubmitting: boolean = false;
@@ -27,18 +27,12 @@
 	};
 </script> -->
 
-<form name="netlify-form-example" method="post" netlify netlify-honeypot="bot-field">
-	<input type="text" name="bot-field" hidden />
-	<p>
-		<label>Your Name: <input type="text" name="name" /></label>
-	</p>
-	<p>
-		<label>Your Email: <input type="email" name="email" /></label>
-	</p>
-	<p>
-		<label>Message: <textarea name="message" /></label>
-	</p>
-	<p>
-		<button type="submit">Send</button>
-	</p>
+<form name="contact" method="get" netlify-honeypot="bot-field" netlify class="contactForm">
+	<input name="name" required placeholder="Name" type="name" />
+	<br />
+	<input name="email" required placeholder="Email" type="email" />
+	<br />
+	<input name="message" required placeholder="Message" type="text" />
+	<br />
+	<input type="submit" value="Submit" />
 </form>
